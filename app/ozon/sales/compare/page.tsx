@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import TopNav from "../../../../components/TopNav";
 
 interface ProductStats {
   name: string;
@@ -248,29 +249,29 @@ export default function OzonComparisonPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Навигация */}
-        <div className="flex items-center gap-4 mb-6">
-          <button
-            onClick={() => router.push("/ozon/sales")}
-            className="text-blue-500 hover:text-blue-700 transition-colors font-semibold"
-          >
-            ← Назад к анализу продаж
-          </button>
-          <span className="text-gray-300">|</span>
+    <div className="min-h-screen">
+      <TopNav
+        back="/ozon/sales"
+        backLabel="Назад к анализу продаж"
+        right={
           <button
             onClick={() => router.push("/ozon")}
-            className="text-blue-500 hover:text-blue-700 transition-colors font-semibold"
+            className="btn-ghost px-3 py-2 text-sm"
           >
-            ← К выбору инструментов
+            К выбору инструментов <span aria-hidden>→</span>
           </button>
+        }
+      />
+      <div className="max-w-7xl mx-auto p-4 pt-8">
+        <div className="rise-in">
+          <span className="badge badge-info">ozon · fbo vs fbs</span>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Сравнение FBO и FBS поставок
+        <h1 className="page-heading text-3xl sm:text-4xl mt-3 mb-2">
+          Сравнение FBO и FBS{" "}
+          <span className="gradient-text text-glow-cyan">поставок</span>
         </h1>
-        <p className="text-gray-600 mb-8">
+        <p className="page-subheading mb-8">
           Выберите период и сравните эффективность разных схем работы
         </p>
 

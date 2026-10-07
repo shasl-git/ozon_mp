@@ -1,9 +1,9 @@
 // app/ozon/cluster-analysis/page.tsx (обновленная версия)
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import * as XLSX from "xlsx";
+import TopNav from "../../../components/TopNav";
 
 interface ClusterProductData {
   cluster: string;
@@ -53,7 +53,6 @@ interface ClusterRecommendation {
 }
 
 export default function OzonClusterAnalysis() {
-  const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [analysisData, setAnalysisData] = useState<ClusterAnalysisData | null>(
@@ -573,20 +572,18 @@ export default function OzonClusterAnalysis() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Навигация */}
-        <button
-          onClick={() => router.push("/ozon")}
-          className="mb-6 text-blue-500 hover:text-blue-700 transition-colors font-semibold"
-        >
-          ← Назад к Ozon
-        </button>
+    <div className="min-h-screen">
+      <TopNav back="/ozon" backLabel="Назад к Ozon" />
+      <div className="max-w-6xl mx-auto p-4 pt-8">
+        <div className="rise-in">
+          <span className="badge badge-info">ozon · clusters terminal</span>
+        </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Кластерный анализ остатков Ozon
+        <h1 className="page-heading text-3xl sm:text-4xl mt-3 mb-2">
+          Кластерный анализ остатков{" "}
+          <span className="gradient-text text-glow-cyan">Ozon</span>
         </h1>
-        <p className="text-gray-600 mb-8">
+        <p className="page-subheading mb-8">
           Загрузите отчет в формате XLSX для анализа остатков товаров по
           кластерам
         </p>
@@ -1071,7 +1068,7 @@ export default function OzonClusterAnalysis() {
                       key={index}
                       className={`bg-gray-50 rounded-lg border border-gray-200 flex flex-col transition-all duration-300 ${
                         isExpanded
-                          ? "fixed inset-0 md:inset-8 lg:inset-12 z-50 bg-white/95 backdrop-blur-sm"
+                          ? "fixed inset-0 md:inset-8 lg:inset-12 z-50 bg-white/5 backdrop-blur-md"
                           : "relative h-full"
                       }`}
                     >

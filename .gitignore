@@ -43,3 +43,6 @@ next-env.d.ts
 users.db
 *.db
 .env.local
+
+# local npm cache (path configured in .npmrc)
+.npm-cache/

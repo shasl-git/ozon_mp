@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
+import TopNav from "../../../components/TopNav";
 
 interface ProductStats {
   name: string;
@@ -662,20 +663,18 @@ export default function OzonSalesAnalysis() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Навигация */}
-        <button
-          onClick={() => router.push("/ozon")}
-          className="mb-6 text-blue-500 hover:text-blue-700 transition-colors font-semibold"
-        >
-          ← Назад к Ozon
-        </button>
+    <div className="min-h-screen">
+      <TopNav back="/ozon" backLabel="Назад к Ozon" />
+      <div className="max-w-6xl mx-auto p-4 pt-8">
+        <div className="rise-in">
+          <span className="badge badge-info">ozon · sales terminal</span>
+        </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Анализ продаж Ozon
+        <h1 className="page-heading text-3xl sm:text-4xl mt-3 mb-2">
+          Анализ продаж{" "}
+          <span className="gradient-text text-glow-cyan">Ozon</span>
         </h1>
-        <p className="text-gray-600 mb-8">
+        <p className="page-subheading mb-8">
           Загрузите отчет в формате CSV или получите его напрямую через API
         </p>
 
@@ -1216,7 +1215,7 @@ export default function OzonSalesAnalysis() {
 
             {/* Раздел "Расчет прибыли" - полностью идентичен твоему */}
             {showProfitCalculation && productProfitData.length > 0 && (
-              <div className="mt-6 bg-gradient-to-br from-white to-emerald-50 rounded-xl shadow-lg p-6 border border-emerald-200">
+              <div className="mt-6 bg-gradient-to-br from-[rgba(22,32,58,0.9)] to-[rgba(7,13,26,0.95)] rounded-xl shadow-lg p-6 border border-emerald-200">
                 {/* ... весь твой код для расчета прибыли ... */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                   <div>
@@ -1437,7 +1436,7 @@ export default function OzonSalesAnalysis() {
                   </div>
 
                   {isFormulaExpanded && (
-                    <div className="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-5 border border-emerald-200 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div className="bg-gradient-to-br from-[rgba(22,32,58,0.9)] to-[rgba(7,13,26,0.95)] rounded-xl p-5 border border-emerald-200 shadow-sm hover:shadow-md transition-shadow duration-300">
                       {/* ... остальной код формулы ... */}
                     </div>
                   )}
