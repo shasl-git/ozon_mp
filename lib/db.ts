@@ -2,7 +2,8 @@ import Database from 'better-sqlite3';
 import bcrypt from 'bcryptjs';
 
 // Создаём базу данных
-const db = new Database('users.db');
+// На Vercel файловая система доступна для записи только в /tmp (данные временные)
+const db = new Database(process.env.VERCEL ? '/tmp/users.db' : 'users.db');
 
 // Создаём таблицу пользователей
 db.exec(`
