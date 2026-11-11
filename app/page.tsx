@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getServerSession } from "../lib/auth";
+import { getSessionPayload } from "../lib/auth";
 import { redirect } from "next/navigation";
 
 /**
@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
  * Редирект на /login делает proxy в middleware; здесь — страховка.
  */
 export default async function Home() {
-  const session = await getServerSession();
+  const session = await getSessionPayload();
   if (!session) {
     redirect("/login");
   }

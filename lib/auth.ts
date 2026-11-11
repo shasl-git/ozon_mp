@@ -27,6 +27,13 @@ export function verifySessionToken(token: string): SessionPayload | null {
   }
 }
 
+// Проверяет только подпись токена — так же, как proxy.ts, иначе при расхождении будет цикл редиректов
+export async function getSessionPayload(): Promise<SessionPayload | null> {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('session')?.value;
+  return token ? verifySessionToken(token) : null;
+}
+
 export async function getServerSession() {
   const cookieStore = await cookies();
   const token = cookieStore.get('session')?.value;
